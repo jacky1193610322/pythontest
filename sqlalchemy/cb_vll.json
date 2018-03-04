@@ -1,0 +1,170 @@
+{
+  "type": "object",
+  "properties": {
+    "product": {
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "type": [
+        "string"
+      ]
+    },
+    "description": {
+      "type": [
+        "string"
+      ]
+    },
+    "bandwidth": {
+      "type": [
+        "integer"
+      ]
+    },
+    "expire_policy": {
+      "type": [
+        "string"
+      ],
+      "enum": [
+        "shutdown",
+        "renewal"
+      ]
+    },
+    "pricing_rule": {
+      "type": [
+        "string"
+      ],
+      "enum": [
+        "bandwidth-volume-prepaid",
+        "bandwidth-95th-postpaid",
+        "traffic-tiered-postpaid"
+      ]
+    },
+    "period": {
+      "type": [
+        "integer"
+      ]
+    },
+    "user": {
+      "type": [
+        "string"
+      ]
+    },
+    "connection_a": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "dc",
+            "cloud"
+          ]
+        },
+        "cloud": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "aliyun",
+            "aws",
+            "qcloud"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "owner_id": {
+          "type": [
+            "string"
+          ]
+        },
+        "vlan": {
+          "type": [
+            "integer"
+          ]
+        },
+        "port_usage": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "untag"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "id"
+      ]
+    },
+    "connection_z": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "dc",
+            "cloud"
+          ]
+        },
+        "cloud": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "aliyun",
+            "aws",
+            "qcloud"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "owner_id": {
+          "type": [
+            "string"
+          ]
+        },
+        "vlan": {
+          "type": [
+            "integer"
+          ]
+        },
+        "port_usage": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "untag"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "id"
+      ]
+    },
+    "promo_code": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "bandwidth",
+    "expire_policy",
+    "connection_a",
+    "connection_z"
+  ],
+  "$schema": "http://json-schema.org/draft-04/schema#"
+}
+
