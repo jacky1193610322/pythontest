@@ -4,10 +4,8 @@
 import sys
 import logging
 
-from contextlib import contextmanager
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy import create_engine
-from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
 
@@ -20,7 +18,7 @@ db = 'mysql://boss:boss@127.0.0.1:3306/test?charset=utf8&use_unicode=1'
 
 
 Base = automap_base()
-engine = create_engine(db, echo=False)
+engine = create_engine(db, echo=True)
 Base.prepare(engine, reflect=True)
 
 factory = sessionmaker(bind=engine)
@@ -30,9 +28,7 @@ person = Base.classes.Person
 
 
 if __name__ == '__main__':
-    s1 = Session()
     p = Session.query(person).filter(person.id == 50000).first()
+    p = Session.query(person).filter(person.id == 50001).first()
     print(p.firstname)
     Session.remove()
-    s2 = Session()
-    print(s1 is s2)

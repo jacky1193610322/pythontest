@@ -45,17 +45,19 @@ person = Base.classes.Person
 
 def add_persons():
     with session_scope() as session:
-        for i in xrange(10000):
+        bodys = []
+        for i in xrange(100000):
             body = {
                 "age": i,
                 "firstname": "auto" + str(i)
             }
-            session.add(person(**body))
+            bodys.append(body)
+        session.bulk_insert_mappings(person, bodys)
 
 
 def count():
     with session_scope() as session:
-        session.query(func.count(person.id)).scalar()
+        return session.query(func.count(person.id)).scalar()
 
 
 def count_1():
@@ -69,4 +71,5 @@ def count_2():
 
 
 if __name__ == '__main__':
-    count_2()
+    add_persons()
+    print(count())
